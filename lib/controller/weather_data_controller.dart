@@ -1,3 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:smart_weather/model/weather_data_model.dart';
 import 'package:smart_weather/network/network.dart';
@@ -8,7 +9,7 @@ final weatherDataProvider = FutureProvider.family((ref, List<String> cities) {
 
 class WeatherDataController with HTTPRequests {
   Future<List<WeatherDataModel>> getApiData(List<String> cities) async {
-    const apiKey = "84041372363ceb59ab377e8d5242a472";
+    final apiKey = dotenv.env["OPEN_WEATHER_API_KEY"];
     const imgUrl = "https://openweathermap.org/img/wn/";
 
     final List<Map<String, dynamic>> out = [];
