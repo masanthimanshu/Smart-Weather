@@ -36,24 +36,16 @@ class HomeCityCards extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              const Icon(Icons.location_on_outlined, size: 35),
-              const SizedBox(width: 10),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(city, style: const TextStyle(fontSize: 20)),
-                  Text("$temperature°C - $weather"),
-                ],
-              ),
-            ],
-          ),
-        ],
-      ),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Row(children: [
+          const Icon(Icons.location_on_outlined, size: 35),
+          const SizedBox(width: 10),
+          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text(city, style: const TextStyle(fontSize: 20)),
+            Text("$temperature°C - $weather"),
+          ]),
+        ]),
+      ]),
     );
   }
 }

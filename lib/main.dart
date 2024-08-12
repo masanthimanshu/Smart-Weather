@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:smart_weather/utils/routes.dart';
@@ -9,8 +9,6 @@ void main() async {
   await Hive.initFlutter();
   await Hive.openBox("myBox");
 
-  await dotenv.load(fileName: ".env");
-
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -19,10 +17,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: appTheme,
-      routes: appRoutes,
-      debugShowCheckedModeBanner: false,
-    );
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+
+    return MaterialApp(theme: appTheme, routes: appRoutes);
   }
 }

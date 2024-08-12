@@ -72,9 +72,7 @@ class _AddLocationState extends ConsumerState<EditLocation> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      _addSubmit(res);
-                    }
+                    if (_formKey.currentState!.validate()) _addSubmit(res);
                   },
                   child: const Text("Add City"),
                 ),
@@ -98,24 +96,22 @@ class _AddLocationState extends ConsumerState<EditLocation> {
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(color: Colors.grey, width: 2),
                       ),
-                      child: Row(
-                        children: [
-                          const Icon(Icons.location_on_outlined, size: 30),
-                          const SizedBox(width: 10),
-                          Padding(
-                            padding: const EdgeInsets.all(10),
-                            child: Text(
-                              res[index],
-                              style: const TextStyle(fontSize: 20),
-                            ),
+                      child: Row(children: [
+                        const Icon(Icons.location_on_outlined, size: 30),
+                        const SizedBox(width: 10),
+                        Padding(
+                          padding: const EdgeInsets.all(10),
+                          child: Text(
+                            res[index],
+                            style: const TextStyle(fontSize: 20),
                           ),
-                          const Spacer(),
-                          IconButton(
-                            onPressed: () => _removeLocation(res[index]),
-                            icon: const Icon(Icons.highlight_remove_sharp),
-                          ),
-                        ],
-                      ),
+                        ),
+                        const Spacer(),
+                        IconButton(
+                          onPressed: () => _removeLocation(res[index]),
+                          icon: const Icon(Icons.highlight_remove_sharp),
+                        ),
+                      ]),
                     );
                   },
                 ),

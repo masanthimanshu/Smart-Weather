@@ -1,15 +1,14 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:smart_weather/model/weather_data_model.dart';
+import 'package:smart_weather/model/weather_model.dart';
 import 'package:smart_weather/network/network.dart';
 
-final weatherDataProvider = FutureProvider.family((ref, List<String> cities) {
-  return WeatherDataController().getApiData(cities);
+final weatherProvider = FutureProvider.family((ref, List<String> cities) {
+  return WeatherController().getApiData(cities);
 });
 
-class WeatherDataController with HTTPRequests {
-  Future<List<WeatherDataModel>> getApiData(List<String> cities) async {
-    final apiKey = dotenv.env["OPEN_WEATHER_API_KEY"];
+class WeatherController with HTTPRequests {
+  Future<List<WeatherModel>> getApiData(List<String> cities) async {
+    const apiKey = "84041372363ceb59ab377e8d5242a472";
     const imgUrl = "https://openweathermap.org/img/wn/";
 
     final List<Map<String, dynamic>> out = [];
@@ -30,7 +29,7 @@ class WeatherDataController with HTTPRequests {
         }
       }));
 
-      return weatherDataModelFromJson(out);
+      return weatherModelFromJson(out);
     } catch (e) {
       throw Exception('An error occurred: $e');
     }

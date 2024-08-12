@@ -5,12 +5,12 @@ final ThemeData appTheme = ThemeData(
   textTheme: GoogleFonts.poppinsTextTheme(),
   elevatedButtonTheme: const ElevatedButtonThemeData(
     style: ButtonStyle(
-      padding: MaterialStatePropertyAll(EdgeInsets.all(15)),
-      textStyle: MaterialStatePropertyAll(
+      padding: WidgetStatePropertyAll(EdgeInsets.all(15)),
+      textStyle: WidgetStatePropertyAll(
         TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       ),
-      backgroundColor: MaterialStatePropertyAll(Colors.teal),
-      foregroundColor: MaterialStatePropertyAll(Colors.white),
+      backgroundColor: WidgetStatePropertyAll(Colors.teal),
+      foregroundColor: WidgetStatePropertyAll(Colors.white),
     ),
   ),
 );
